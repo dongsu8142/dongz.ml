@@ -75,8 +75,7 @@ const renderers = {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const file = await import(`../../config.yml`)
-  const config = yaml.safeLoad(file.default, "utf8");
+  const config = yaml.safeLoad(fs.readFileSync("./config/config.yml", "utf8"), "utf8");
   const { slug } = context.params;
   const content = await import(`../../content/${slug}.md`);
   const data = matter(content.default);
