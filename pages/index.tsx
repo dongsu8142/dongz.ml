@@ -6,7 +6,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Analytics from "../lib/analytics";
 
-export default function Home({ contents }) {
+export default function Home({ contents, config }) {
   let datas: matter.GrayMatterFile<any>[] = [];
   for (let content of contents) {
     const data = matter(content);
