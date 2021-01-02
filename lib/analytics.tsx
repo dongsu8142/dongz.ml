@@ -17,7 +17,6 @@ export default function Analytics({ config }) {
       </>
     );
   } else {
-    <>
-    </>
+    return <></>;
   }
 }
