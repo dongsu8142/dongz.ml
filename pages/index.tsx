@@ -4,6 +4,7 @@ import { GetStaticProps } from "next";
 import yaml from "js-yaml";
 import Link from "next/link";
 import Head from "next/head";
+import Analytics from "../lib/analytics";
 
 export default function Home({ contents, config }) {
   let datas: matter.GrayMatterFile<any>[] = [];
@@ -14,6 +15,7 @@ export default function Home({ contents, config }) {
   return (
     <>
       <Head>
+        <Analytics config={config} />
         <title>{config.title}</title>
         <meta property="og:title" content={config.title} />
         <meta name="description" content={config.description} />
