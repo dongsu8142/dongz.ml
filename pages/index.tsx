@@ -5,13 +5,15 @@ import yaml from "js-yaml";
 import Link from "next/link";
 import Head from "next/head";
 import Analytics from "../lib/analytics";
+import config from "../config.yml"
 
-export default function Home({ contents, config }) {
+export default function Home({ contents }) {
   let datas: matter.GrayMatterFile<any>[] = [];
   for (let content of contents) {
     const data = matter(content);
     datas.push(data);
   }
+  console.log(config)
   return (
     <>
       <Head>
@@ -92,8 +94,8 @@ export default function Home({ contents, config }) {
 }
 
 export const getStaticProps: GetStaticProps = async context => {
-  const file = await import(`../config.yml`)
-  const config = yaml.safeLoad(file.default, "utf8");
+  // const file = await import(`../config.yml`)
+  // const config = yaml.safeLoad(file.default, "utf8");
   const files: string[] = await fs.readdirSync("./content", "utf8");
   let contents: Object[] = [];
   for (let file of files) {
