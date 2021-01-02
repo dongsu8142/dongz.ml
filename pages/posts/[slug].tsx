@@ -88,7 +88,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async context => {
   const config = yaml.safeLoad(
-    fs.readFileSync("./config/config.yml", "utf8"),
+    fs.readFileSync("./config.yml", "utf8"),
     "utf8"
   );
   const { slug } = context.params;

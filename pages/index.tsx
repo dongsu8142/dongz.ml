@@ -100,7 +100,7 @@ function date_descending(a, b) {
 };
 
 export const getStaticProps: GetStaticProps = async context => {
-  const config = yaml.safeLoad(fs.readFileSync("./config/config.yml", "utf8"), "utf8");
+  const config = yaml.safeLoad(fs.readFileSync("./config.yml", "utf8"), "utf8");
   const files: string[] = await fs.readdirSync("./content", "utf8");
   let contents: Object[] = [];
   for (let file of files) {
