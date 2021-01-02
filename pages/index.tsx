@@ -5,6 +5,7 @@ import yaml from "js-yaml";
 import Link from "next/link";
 import Head from "next/head";
 import Analytics from "../lib/analytics";
+import ReactMarkdown from "react-markdown";
 
 export default function Home({ contents, config }) {
   let datas: matter.GrayMatterFile<any>[] = [];
@@ -80,7 +81,7 @@ export default function Home({ contents, config }) {
                     </div>
                   </div>
                   <div className="post">
-                    <p>{data.data.description}</p>
+                    <ReactMarkdown children={data.data.description} />
                   </div>
                 </li>
               );
