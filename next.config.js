@@ -11,7 +11,7 @@ module.exports = {
     });
     config.module.rules.push({
       test: /\.yml$/,
-      use: "raw-loader",
+      use: "js-yaml-loader",
     })
     return config;
   },
