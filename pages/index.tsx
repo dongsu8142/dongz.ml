@@ -12,7 +12,7 @@ export default function Home({ contents, config }) {
     const data = matter(content);
     datas.push(data);
   }
-  console.log(config)
+  datas = datas.sort(date_descending);
   return (
     <>
       <Head>
@@ -91,6 +91,12 @@ export default function Home({ contents, config }) {
     </>
   );
 }
+
+function date_descending(a, b) {
+  var dateA = new Date(a.data.date).getTime();
+  var dateB = new Date(b.data.date).getTime();
+  return dateA < dateB ? 1 : -1;
+};
 
 export const getStaticProps: GetStaticProps = async context => {
   const config = yaml.safeLoad(fs.readFileSync("./config/config.yml", "utf8"), "utf8");
