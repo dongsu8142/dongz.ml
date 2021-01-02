@@ -2,10 +2,7 @@ import Document, { Head, Main, NextScript, Html } from "next/document";
 import yaml from "js-yaml";
 import fs from "fs";
 
-// const config = yaml.safeLoad(fs.readFileSync(`./config.yml`, "utf8"), "utf8");
-const config = {
-  analytics_id: null
-}
+const config = yaml.safeLoad(fs.readFileSync(`./config.yml`, "utf8"), "utf8");
 
 class MyDocument extends Document {
   render() {
