@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import yaml from "js-yaml";
@@ -74,8 +74,17 @@ const renderers = {
   },
 };
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const config = yaml.safeLoad(fs.readFileSync("../../config/config.yml", "utf8"), "utf8");
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { slug: "awesome-nextjs-blog" } }
+    ],
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async context => {
+  const config = yaml.safeLoad(fs.readFileSync("./config/config.yml", "utf8"), "utf8");
   const { slug } = context.params;
   const content = await import(`../../content/${slug}.md`);
   const data = matter(content.default);
