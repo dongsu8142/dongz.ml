@@ -1,5 +1,10 @@
 module.exports = {
-  webpack: (config) => {
+  webpack: (config, {isServer}) => {
+    if(!isServer) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
     config.module.rules.push({
       test: /\.md$/,
       use: "raw-loader",

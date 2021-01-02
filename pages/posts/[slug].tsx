@@ -6,6 +6,7 @@ import Head from "next/head";
 import yaml from "js-yaml";
 import fs from "fs";
 import Analytics from "../../lib/analytics";
+import path from "path";
 
 export default function PostTemplate({ data, config }) {
   const frontmatter = data.data;
@@ -75,7 +76,9 @@ const renderers = {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const config = yaml.safeLoad(fs.readFileSync("./config.yml", "utf8"), "utf8");
+  const file = path.join("./config.yml")
+  console.log(file)
+  const config = yaml.safeLoad(fs.readFileSync(file, "utf8"), "utf8");
   const { slug } = context.params;
   const content = await import(`../../content/${slug}.md`);
   const data = matter(content.default);
