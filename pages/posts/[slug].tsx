@@ -3,10 +3,8 @@ import matter from "gray-matter";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import yaml from "js-yaml";
-import fs from "fs";
 
-export default function PostTemplate({ data, config }) {
+export default function PostTemplate({ data }) {
   const frontmatter = data.data;
   const content = data.content
 
@@ -73,7 +71,6 @@ const renderers = {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const config = yaml.safeLoad(fs.readFileSync("../config.yml", "utf8"), "utf8");
   const { slug } = context.params;
   const content = await import(`../../content/${slug}.md`);
   const data = matter(content.default);
@@ -81,8 +78,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   data.orig = null
   return {
     props: {
-      data,
-      config,
+      data
     },
   };
 };
