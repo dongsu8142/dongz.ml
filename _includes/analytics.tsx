@@ -1,7 +1,9 @@
+import Head from "next/head";
+
 export default function Analytics({ config }) {
   if (config.analytics_id) {
     return (
-      <>
+      <Head>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${config.analytics_id}`}
@@ -14,7 +16,7 @@ export default function Analytics({ config }) {
           gtag('config', '${config.analytics_id}');`,
           }}
         ></script>
-      </>
+      </Head>
     );
   } else {
     return <></>;
