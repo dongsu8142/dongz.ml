@@ -24,8 +24,8 @@ export default function PostTemplate({ post, config, slug }) {
               <script
                 dangerouslySetInnerHTML={{
                   __html: `var disqus_config = function () {
-            this.page.url = "/posts/${slug}/";
-            this.page.identifier = "/posts/${slug}/";
+            this.page.url = "${config.baseUrl}/posts/${slug}/";
+            this.page.identifier = "${config.baseUrl}/posts/${slug}/";
           };
           (function () {
             var d = document,

@@ -5,6 +5,7 @@ tagline: Developer
 description: > # this means to ignore newlines until "show_exerpts:"
   한동수 개발일지
 analytics_id: 'UA-129158424-4'
+baseUrl: https://dongz.ml
 disqus_shortname: https-dongz-ml
 social_links:
   github: hands8142
